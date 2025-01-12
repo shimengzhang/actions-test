@@ -1,0 +1,24 @@
+name: deploy-website
+on: 
+  push: 
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: install nodejs
+        uses: actions/setup-node@v4.1.0
+        with: 
+          node-version: "20.X"
+      - name: install deps
+        run: npm install
+      - name: build app
+        run: npm run build
+        
+        
+          
